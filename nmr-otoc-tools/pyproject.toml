@@ -1,0 +1,138 @@
+# Copyright 2026 Google LLC
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+[project]
+name = "nmr-otoc-tools"
+description = "Tools for testing NMR OTOCs."
+dynamic = ["version"]
+dependencies = [
+    "nmrotoc",
+    "numpy",
+    "cirq",
+    "qsimcirq",
+    "joblib",
+    "biopython",
+    "pyscf>=2.6",
+]
+requires-python = ">= 3.11"
+
+[project.optional-dependencies]
+testing = [
+    "pytest",
+    "pytest-cov",
+]
+linting = [
+    "mypy",
+    "ruff",
+]
+
+[project.scripts]
+nmr-generate-instances = "nmr_otoc_tools.generate_instances:main"
+nmr-run-otoc-simulation = "nmr_otoc_tools.run_otoc_simulation:main"
+nmr-setup-simulation = "nmr_otoc_tools.setup_simulation:main"
+nmr-run-from-config = "nmr_otoc_tools.run_from_config:main"
+nmr-run-core-from-config = "nmr_otoc_tools.run_core_from_config:main"
+nmr-circuits-from-config = "nmr_otoc_tools.circuits_from_config:main"
+nmr-map-atoms = "nmr_otoc_tools.map_atoms:main"
+nmr-compute-distances = "nmr_otoc_tools.compute_distances:main"
+
+
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[[tool.mypy.overrides]]
+module = ["joblib", "nmrotoc.*", "pyscf.*"]
+ignore_missing_imports = true
+
+[tool.setuptools]
+packages = ["nmr_otoc_tools"]
+
+[tool.setuptools.dynamic]
+version = {attr = "nmr_otoc_tools.__version__"}
+
+[tool.coverage.report]
+exclude_also = [
+    "if __name__ == .__main__.:",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "ERA", # commented out code
+    "YTT", # version
+    "ANN", # annotations
+    "BLE", # blind except
+    "FBT", # flake8 boolean arguments 
+    "B", # bugbear
+    "A", # flake8 builtins
+    "COM", # commas
+    "C4", # flake8-comprehensions
+    "DTZ", # datetime
+    "EM", # error messages
+    "EXE", # shebangs and executable files
+    "FA", # simplify annotations with __future__
+    "INT", # gettext
+    "ISC", # string concatenation
+    "ICN", # imports
+    "LOG", # logging
+    "G", # logging statements
+    "INP", # implicit namespace packages
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PYI", # flake8-pyi
+    "PT", # pytest
+    "Q", # quotes
+    "RSE", # raise formatting
+    "RET", # return values
+    "SLF",  # access of private members
+    "SIM", # flake8-simplify
+    "SLOT", # __slots__ in subclasses
+    "TID", # tidy imports
+    "TC", # type checking
+    "ARG", # unused arguments
+    "PTH", # pathlib
+    "FLY", # string format
+    "I", # isort
+    "C90", # Mccabe complexity
+    "NPY", # numpy
+    "PD", # pandas
+    "N", # PEP8 naming
+    "PERF", # performance
+    "E", # pycodestyle (error)
+    "W", # pycodestyle (warning)
+    "D", # require docstrings, formatting
+    "F", # pyflakes
+    "PGH", # pygrep-hooks
+    "PLC", # pylint convention
+    "PLE", # pylint error
+    "PLR", # pylint refactor flags
+    "PLW", # pylint warning
+    "UP", # pyupgrade
+    "FURB", # refurb
+    "RUF", # ruff-specific rules
+    "TRY", # error handling
+]
+
+ignore = [
+    "COM812", # redundant, recommended to ignore
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["INP001", "PLR2004"]
+"integration_tests/*" = ["INP001"]
+
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 12
+max-branches = 16
+
+[tool.ruff.lint.mccabe]
+max-complexity = 24
