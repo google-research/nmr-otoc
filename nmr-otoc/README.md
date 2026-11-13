@@ -1,32 +1,36 @@
 # nmr-otoc
 
-Contains files to assist in the generation of molecular Hamiltonians, the simulation of OTOCs in real NMR systems, and to generate and test different Trotterization / product formula methods.
+Contains files to assist in the generation of molecular Hamiltonians, the simulation of OTOCs in real NMR systems, and to generate and test different Trotterization/product formula methods.
 
 # Contents
 
-├── dataclasses.py        Dataclasses used in the rest of the code (see also molecule)  
-├── chem                  Functions pertaining to chemistry (pre-quantum computing)  
-│   ├── hamiltonians.py   Generating spin Hamiltonians from molecular data  
-│   ├── manipulation.py   Manipulating molecules (eg choosing and shifting submolecules)  
-│   ├── molecule.py       Dataclasses for representing molecules  
-│   └── toluene.py        Classes for representing toluene (molecule in experiment)  
-├── circuits              Functions pertaining to circuit generation  
-│   ├── compilation.py    Functions for optimizing circuits for the device  
-│   ├── gates.py          Quantum gate definitions  
-│   ├── misc.py           Other circuit-related functions (e.g. prep circuits)  
-│   ├── noise.py          Functions to generate noisy circuits  
-│   ├── otocs.py          Functions for OTOC circuit generation  
-│   ├── pauli_echoes.py   Functions to add mid-circuit echoes to a FSim circuit  
-│   ├── time_evolution.py Functions for more detailed time evolution (DREAM pulses)  
-│   ├── trotter_opt.py    Functions for optimizing Trotter circuits  
-│   └── trotter.py        Functions for representing and generating Trotter circuits  
-├── math                  Fundamental math routines  
-│   ├── graphs.py         Graph algorithms  
-│   ├── operators.py      Linear algebra and other operator generation work  
-└── scripts               Full scripts for running code  
-&nbsp;&nbsp;&nbsp;&nbsp;├── mqc.py            Multiple quantum coherence scripts  
-&nbsp;&nbsp;&nbsp;&nbsp;├── otocs.py          OTOC-related scripts (see also run_scripts)  
-&nbsp;&nbsp;&nbsp;&nbsp;├── run_scripts.py    General-purpose scripts  
+```text
+nmr-otoc/
+├─ setup.py                   Package installation script
+├─ nmrotoc/                   Core Python package
+│  ├─ dataclasses.py          Shared dataclasses (see also chem/molecule.py)
+│  ├─ chem/                   Chemistry and PDB structure utilities
+│  │  ├─ check_quality.py     Checking PDB structures for clashes and missing residues
+│  │  ├─ clean_pdb.py         Filtering, conformer averaging, and fixing PDB files
+│  │  ├─ hamiltonians.py      Generating spin Hamiltonians from molecular data
+│  │  ├─ manipulation.py      Manipulating molecules (e.g., choosing/shifting submolecules)
+│  │  ├─ molecule.py          Dataclasses for representing molecules
+│  │  ├─ pdb_extraction.py    Querying RCSB PDB and extracting atomic coordinates
+│  │  └─ toluene.py           Classes for representing toluene (molecule in experiment)
+│  ├─ circuits/               Quantum circuit generation
+│  │  ├─ compilation.py       Optimizing circuits for the device
+│  │  ├─ gates.py             Quantum gate definitions
+│  │  ├─ otocs.py             OTOC circuit generation
+│  │  ├─ time_evolution.py    Detailed time evolution (DREAM pulses)
+│  │  └─ trotter.py           Representing and generating Trotter circuits
+│  ├─ math/                   Fundamental math routines
+│  │  ├─ graphs.py            Graph algorithms
+│  │  └─ operators.py         Linear algebra and operator generation
+│  └─ scripts/                Simulation runner routines
+│     └─ otocs.py             Infinite-temperature OTOC simulation runner
+└─ tutorials/                 Jupyter notebook tutorials
+   └─ trotter_tutorial.ipynb  Walkthrough of Trotterization methods
+```
 
 # Recommended tutorials
 
