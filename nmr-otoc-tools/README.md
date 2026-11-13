@@ -52,7 +52,7 @@ $$H = \eta_{\text{hom}} H_{\text{hom}} + \eta_{\text{het}} H_{\text{het}}$$
 ### Homogeneous Coupling (DQ Term)
 Homogeneous couplings occur between spins of the same species (Carbon-Carbon and Proton-Proton). In the Double Quantum (DQ) Hamiltonian frame (often used in NMR scrambling experiments like DREAM), this interaction takes the form:
 
-$$H_{\text{hom}} = \sum_{i < j \text{ (same species)}} d_{ij} (Y_i Y_j - X_i X_j)$$
+$$H_{\text{hom}} = \sum_{i \lt j \text{ (same species)}} d_{ij} (Y_i Y_j - X_i X_j)$$
 
 where $d_{ij}$ is the dipolar coupling constant between spins $i$ and $j$.
 
@@ -104,7 +104,7 @@ with $b_{ij}$ the usual dipolar constant. Homonuclear (double-quantum) couplings
 **complex**; heteronuclear ($Z_pZ_i$) couplings are **real** because that spin operator is
 Hermitian ($\eta_{-m} = \eta_m^*$ is enforced). The spin-operator convention is
 
-$$H_{\text{hom}} = \sum_{i<j}\big[\mathrm{Re}(d_{ij})(Y_iY_j - X_iX_j) + \mathrm{Im}(d_{ij})(X_iY_j + Y_iX_j)\big]$$
+$$H_{\text{hom}} = \sum_{i \lt j}\big[\mathrm{Re}(d_{ij})(Y_iY_j - X_iX_j) + \mathrm{Im}(d_{ij})(X_iY_j + Y_iX_j)\big]$$
 
 so the phase of $d_{ij}$ simply rotates the DQ operator about $z$ — exactly the rotor-phase
 (γ-encoding) factor. With $\eta_0 = 1$ and a zero rotor angle the model reduces *exactly* to
