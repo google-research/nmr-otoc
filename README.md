@@ -149,9 +149,7 @@ all. Please read and respect our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
-NMR-OTOC is licensed under the terms of the BSD 3-Clause Clear License. This
-permissive license offers the same terms as the standard BSD 3-Clause license,
-with the explicit clarification that it does not grant any patent rights.
+NMR-OTOC is licensed under the terms of the BSD 3-Clause Clear License.
 
 ## Citation
 
