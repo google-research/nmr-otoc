@@ -5,6 +5,7 @@
 End-to-end simulation of OTOCs in solid-state NMR spin systems from protein
 structures.
 
+[Paper][paper] –
 [Features](#features) –
 [Installation](#installation) –
 [Quick start](#quick-start) –
@@ -24,7 +25,8 @@ structures in [Protein Data Bank][pdb] ([PDB/mmCIF][rcsb]) format to effective
 [spin Hamiltonians][spin-model] and [out-of-time-ordered correlators][otoc]
 (OTOCs) — quantities that, much like a physical interferometer, measure how
 quantum information scrambles and spreads across complex many-body correlations
-over time.
+over time. This repository accompanies the paper *[Modeling quantum information
+scrambling in realistic protein NMR experiments][paper]* (`arXiv:2611.23213`).
 
 ## Features
 
@@ -153,11 +155,29 @@ NMR-OTOC is licensed under the terms of the BSD 3-Clause Clear License.
 
 ## Citation
 
-This repository accompanies a forthcoming OTOC-NMR theory publication and
-companion datasets to be archived on Zenodo. Citation metadata
-(`CITATION.cff` and publication bibliographic details) will be added once the
-paper is published. In the meantime, please cite the repository at
-<https://github.com/google-research/nmr-otoc>, and if you use the Lebedev
+This repository accompanies the paper:
+
+> Alec F. White, Joseph Haslehurst, Daniel R. Moberg, Justin Provazza,
+> Nicholas C. Rubin, Thomas E. O'Brien, and Christian Bengs,
+> *Modeling quantum information scrambling in realistic protein NMR
+> experiments*, [arXiv:2611.23213][paper] (2026).
+
+If you use this code in your research, please cite the paper:
+
+```bibtex
+@misc{white2026modeling,
+  title         = {Modeling quantum information scrambling in realistic protein {NMR} experiments},
+  author        = {Alec F. White and Joseph Haslehurst and Daniel R. Moberg and Justin Provazza and Nicholas C. Rubin and Thomas E. O'Brien and Christian Bengs},
+  year          = {2026},
+  eprint        = {2611.23213},
+  archivePrefix = {arXiv},
+  primaryClass  = {quant-ph},
+  doi           = {10.48550/arXiv.2611.23213},
+  url           = {https://arxiv.org/abs/2611.23213},
+}
+```
+
+Companion datasets will be archived on Zenodo. If you use the Lebedev
 quadrature grids via `nmr-otoc-tools`, please also cite the Lebedev and Laikov
 reference listed in [`nmr-otoc-tools/README.md`][tools-citation].
 
@@ -184,6 +204,7 @@ Copyright 2026 Google LLC.
 [mas]: https://en.wikipedia.org/wiki/Magic_angle_spinning
 [nmr]: https://en.wikipedia.org/wiki/Nuclear_magnetic_resonance
 [otoc]: https://en.wikipedia.org/wiki/Out-of-time-ordered_correlator
+[paper]: https://arxiv.org/abs/2611.23213
 [pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank
 [qsim]: https://quantumai.google/qsim
 [rcsb]: https://www.rcsb.org/
