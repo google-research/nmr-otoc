@@ -1,0 +1,77 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Summary: check the subject and description of each PR for basic best
+# practices and fail with an error if a PR doesn't meet the conditions.
+
+name: Pull request text checker
+run-name: >-
+  Check title & description of PR ${{github.event.pull_request.number}} by
+  @${{github.actor}}
+
+on:
+  pull_request:
+    types:
+      - edited
+      - opened
+      - reopened
+    branches:
+      - main
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.event.pull_request.number }}"
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  check-text-length:
+    if: github.repository_owner == 'quantumlib'
+    name: "Check PR title & description"
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    steps:
+      - name: Check the lengths of the PR title and description
+        id: check-length
+        env:
+          SHELLOPTS: ${{runner.debug && 'xtrace' || '' }}
+        run: |
+          error=0
+          title_words=$(jq -r '
+            (.pull_request.title // "") | [scan("\\S+")] | length
+          ' "${GITHUB_EVENT_PATH}")
+          body_len=$(jq -r '
+            (.pull_request.body // "")
+            | gsub("\\s+"; " ")
+            | gsub("^ | $"; "")
+            | length
+          ' "${GITHUB_EVENT_PATH}")
+
+          if (( title_words < 2 )); then
+            echo "::error::PR title must contain at least two words."
+            error=1
+          fi
+          if (( body_len < 10 )); then
+            echo "::error::PR description must be at least 10 characters long."
+            error=1
+          fi
+
+          exit "${error}"
+
+      - name: Write failure summary
+        if: failure() && steps.check-length.outcome == 'failure'
+        run: |
+          {
+            printf "❌ Problem(s) found with the PR title and/or description.\n"
+          } >> "${GITHUB_STEP_SUMMARY}"
