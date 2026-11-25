@@ -10,6 +10,7 @@ structures.
 [Quick start](#quick-start) –
 [Documentation](#documentation) –
 [Help](#help) –
+[License](#license) –
 [Citation](#citation) –
 [Contact](#contact)
 
@@ -21,7 +22,7 @@ quantum simulation, and solid-state [nuclear magnetic resonance][nmr] (NMR)
 spectroscopy. It implements an end-to-end pipeline from macromolecular
 structures in [Protein Data Bank][pdb] ([PDB/mmCIF][rcsb]) format to effective
 [spin Hamiltonians][spin-model] and [out-of-time-ordered correlators][otoc]
-(OTOCs)—quantities that, much like a physical interferometer, measure how
+(OTOCs) — quantities that, much like a physical interferometer, measure how
 quantum information scrambles and spreads across complex many-body correlations
 over time.
 
@@ -35,8 +36,8 @@ over time.
     SO(3) powder-averaging grids.
 
 *   Exact Trotterized OTOC simulation (`nmr-otoc` and `nmr-otoc-tools`):
-    construct first- and second-order Trotter circuits—either dense
-    all-to-all circuits or 1D linear swap networks—in [Cirq], compute
+    construct first- and second-order Trotter circuits — either dense
+    all-to-all circuits or 1D linear swap networks — in [Cirq], compute
     infinite-temperature OTOCs via Haar-random state averaging in `qsimcirq`,
     and verify atom mappings and distances (`nmr-map-atoms`,
     `nmr-compute-distances`).
@@ -146,6 +147,10 @@ reach the maintainers at `quantum-oss-maintainers@google.com`.
 We are committed to providing a friendly, safe, and welcoming environment for
 all. Please read and respect our [Code of Conduct](CODE_OF_CONDUCT.md).
 
+## License
+
+NMR-OTOC is licensed under the terms of the BSD 3-Clause Clear License.
+
 ## Citation
 
 This repository accompanies a forthcoming OTOC-NMR theory publication and
@@ -163,9 +168,7 @@ quantum-oss-maintainers@google.com.
 
 ## Disclaimer
 
-This is not an officially supported Google product. This project is not
-eligible for the [Google Open Source Software Vulnerability Rewards
-Program](https://bughunters.google.com/open-source-security).
+This is not an officially supported Google product.
 
 Copyright 2026 Google LLC.
 
