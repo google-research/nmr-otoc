@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+type: software
+title: "NMR-OTOC"
+repository-code: "https://github.com/google-research/nmr-otoc"
+license: BSD-3-Clause-Clear
+authors:
+  - family-names: White
+    given-names: Alec F.
+  - family-names: Haslehurst
+    given-names: Joseph
+  - family-names: Moberg
+    given-names: Daniel R.
+  - family-names: Provazza
+    given-names: Justin
+  - family-names: Rubin
+    given-names: Nicholas C.
+  - family-names: O'Brien
+    given-names: Thomas E.
+  - family-names: Bengs
+    given-names: Christian
+preferred-citation:
+  type: article
+  title: "Modeling quantum information scrambling in realistic protein NMR experiments"
+  authors:
+    - family-names: White
+      given-names: Alec F.
+    - family-names: Haslehurst
+      given-names: Joseph
+    - family-names: Moberg
+      given-names: Daniel R.
+    - family-names: Provazza
+      given-names: Justin
+    - family-names: Rubin
+      given-names: Nicholas C.
+    - family-names: O'Brien
+      given-names: Thomas E.
+    - family-names: Bengs
+      given-names: Christian
+  year: 2026
+  journal: "arXiv preprint arXiv:2611.23213"
+  doi: "10.48550/arXiv.2611.23213"
+  url: "https://arxiv.org/abs/2611.23213"
+  identifiers:
+    - type: other
+      value: "arXiv:2611.23213"
+      description: "arXiv preprint identifier"
