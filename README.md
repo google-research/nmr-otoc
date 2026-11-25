@@ -26,7 +26,7 @@ structures in [Protein Data Bank][pdb] ([PDB/mmCIF][rcsb]) format to effective
 (OTOCs) — quantities that, much like a physical interferometer, measure how
 quantum information scrambles and spreads across complex many-body correlations
 over time. This repository accompanies the paper *[Modeling quantum information
-scrambling in realistic protein NMR experiments][paper]* (`arXiv:2611.23213`).
+scrambling in realistic protein NMR experiments][paper]* (arXiv:2611.23213).
 
 ## Features
 
@@ -167,7 +167,8 @@ If you use this code in your research, please cite the paper:
 ```bibtex
 @misc{white2026modeling,
   title         = {Modeling quantum information scrambling in realistic protein {NMR} experiments},
-  author        = {Alec F. White and Joseph Haslehurst and Daniel R. Moberg and Justin Provazza and Nicholas C. Rubin and Thomas E. O'Brien and Christian Bengs},
+  author        = {Alec F. White and Joseph Haslehurst and Daniel R. Moberg and Justin Provazza 
+                   and Nicholas C. Rubin and Thomas E. O'Brien and Christian Bengs},
   year          = {2026},
   eprint        = {2611.23213},
   archivePrefix = {arXiv},
