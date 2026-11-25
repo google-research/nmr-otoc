@@ -27,6 +27,7 @@ The spins are partitioned into a **system** (typically 2 Carbon spins) and an **
 ## The Simulated Quantity (OTOC)
 
 The library computes the **infinite-temperature OTOC** between two operators acting on the system spins:
+
 $$O(t) = \frac{1}{2^N} \text{Tr} \left( X_1(t) X_0 X_1(t) X_0 \right)$$
 
 where:
@@ -45,16 +46,21 @@ $O(t)$ is estimated by averaging the circuit's final $\langle Z_0 \rangle$ over 
 The simulated physical system represents a solid-state NMR setup, typically featuring two species of spins (e.g., $^{13}\text{C}$ as system spins and $^1\text{H}$ as environment spins).
 
 The Hamiltonian is partitioned into homogeneous and heterogeneous parts, scaled by parameters $\eta_{\text{hom}}$ and $\eta_{\text{het}}$:
+
 $$H = \eta_{\text{hom}} H_{\text{hom}} + \eta_{\text{het}} H_{\text{het}}$$
 
 ### Homogeneous Coupling (DQ Term)
 Homogeneous couplings occur between spins of the same species (Carbon-Carbon and Proton-Proton). In the Double Quantum (DQ) Hamiltonian frame (often used in NMR scrambling experiments like DREAM), this interaction takes the form:
-$$H_{\text{hom}} = \sum_{i < j \text{ (same species)}} d_{ij} (Y_i Y_j - X_i X_j)$$
+
+$$H_{\text{hom}} = \sum_{i \lt j \text{ (same species)}} d_{ij} (Y_i Y_j - X_i X_j)$$
+
 where $d_{ij}$ is the dipolar coupling constant between spins $i$ and $j$.
 
 ### Heterogeneous Coupling (Secular Term)
 Heterogeneous couplings occur between spins of different species (Carbon-Proton). Due to the large difference in Larmor frequencies between different species in a strong magnetic field, this interaction is secularized and takes the form:
+
 $$H_{\text{het}} = \sum_{p \in \text{Carbons}, i \in \text{Protons}} d_{pi} Z_p Z_i$$
+
 where $d_{pi}$ is the heteronuclear dipolar coupling.
 
 ---
@@ -87,18 +93,18 @@ first-order average Hamiltonian of a recoupling sequence under MAS.
 ### Physics
 
 For every pair the five rank-2 spatial components are computed once in the molecular frame,
-$A^M_{2m'} = d^2_{0m'}(\theta)e^{-im'\phi}$ (normalized to $A^{PAS}_{20} = 1$), rotated into
+$A^M_{2m'} = d^2_{0m'}(\theta)e^{-im'\phi}$ (normalized to $A_{20}^{PAS} = 1$), rotated into
 the rotor frame with a Wigner matrix, and contracted with the MAS mechanical scaling and the
 RF scaling $\eta_{m\mu}$:
 
 $$A^R_{2m} = \sum_{m'} A^M_{2m'} D^2_{m'm}(\Omega),\qquad
-d_{ij} = b_{ij} \sum_m \eta_m\, d^2_{m0}(\beta_{\text{rotor}})\, A^R_{2m}$$
+d_{ij} = b_{ij} \sum_m \eta_m\thinspace d^2_{m0}(\beta_{\text{rotor}})\thinspace A^R_{2m}$$
 
 with $b_{ij}$ the usual dipolar constant. Homonuclear (double-quantum) couplings stay
 **complex**; heteronuclear ($Z_pZ_i$) couplings are **real** because that spin operator is
 Hermitian ($\eta_{-m} = \eta_m^*$ is enforced). The spin-operator convention is
 
-$$H_{\text{hom}} = \sum_{i<j}\big[\mathrm{Re}(d_{ij})(Y_iY_j - X_iX_j) + \mathrm{Im}(d_{ij})(X_iY_j + Y_iX_j)\big]$$
+$$H_{\text{hom}} = \sum_{i \lt j}\big[\mathrm{Re}(d_{ij})(Y_iY_j - X_iX_j) + \mathrm{Im}(d_{ij})(X_iY_j + Y_iX_j)\big]$$
 
 so the phase of $d_{ij}$ simply rotates the DQ operator about $z$ — exactly the rotor-phase
 (γ-encoding) factor. With $\eta_0 = 1$ and a zero rotor angle the model reduces *exactly* to
@@ -106,7 +112,7 @@ the static `dipolar` coupling.
 
 A recoupling sequence matches a **single** spatial Fourier component to the spin operator; the
 default is the γ-encoded $m = -1$ component, giving $|d_{ij}| = |b_{ij}\sin 2\beta_{ij}|/(2\sqrt2)$
-(twice the HORROR/DREAM $\kappa = 1/(4\sqrt2)$) with phase $\gamma_{ij}$. Instances carry unit
+(twice the HORROR/DREAM $\kappa = 1/{(4\sqrt2)}$) with phase $\gamma_{ij}$. Instances carry unit
 weight on the selected component(s); sequence-specific scale factors are applied at simulation
 time with `--eta_hom` / `--eta_het`, so the same instances can be reused for different sequences.
 
